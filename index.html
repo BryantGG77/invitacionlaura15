@@ -332,16 +332,9 @@ radial-gradient(circle at 85% 85%,rgba(215,164,157,.30),transparent 30%),#f8f0e9
           <button id="playBtn" type="button">▶ Escuchar mi canción</button>
           <small id="musicText">Toca el botón para escucharla.</small>
 
-          <!-- Elemento de audio con el archivo desde tus assets -->
-          <audio id="myAudio" src="assets/Selena - Dreaming of You (30th AnniversaryRemastered 2025).mp3" preload="auto"></audio>
-
-          <!-- Contenedor opcional de controles si deseas mostrar la barra de reproducción -->
-          <div style="margin-top:14px;border-radius:14px;overflow:hidden;display:none" id="videoBox">
-            <audio controls style="width: 100%;">
-              <source src="assets/Selena - Dreaming of You (30th AnniversaryRemastered 2025).mp3" type="audio/mpeg">
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-          </div>
+          <!-- Elemento de audio oculto -->
+          <audio id="myAudio" src="assets/Selena - Dreaming of You (30th AnniversaryRemastered 2025).mp3"
+            preload="auto"></audio>
         </div>
       </div>
 
@@ -460,6 +453,27 @@ radial-gradient(circle at 85% 85%,rgba(215,164,157,.30),transparent 30%),#f8f0e9
         setTimeout(() => welcome.remove(), 450);
       });
     }
+    const playBtn = document.getElementById('playBtn');
+    const musicText = document.getElementById('musicText');
+    const myAudio = document.getElementById('myAudio');
+
+    playBtn.addEventListener('click', () => {
+      if (myAudio.paused) {
+        myAudio.play();
+        playBtn.textContent = '❚❚ Pausar canción';
+        musicText.textContent = 'Reproduciendo de fondo...';
+      } else {
+        myAudio.pause();
+        playBtn.textContent = '▶ Escuchar mi canción';
+        musicText.textContent = 'Toca el botón para escucharla.';
+      }
+    });
+
+    // Al finalizar la canción, restaura el estado del botón
+    myAudio.addEventListener('ended', () => {
+      playBtn.textContent = '▶ Escuchar mi canción';
+      musicText.textContent = 'Toca el botón para escucharla.';
+    });
   </script>
 </body>
 
