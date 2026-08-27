@@ -329,11 +329,17 @@ radial-gradient(circle at 85% 85%,rgba(215,164,157,.30),transparent 30%),#f8f0e9
             ♫ Dreaming of You · Selena ♫
           </div>
           <button id="playBtn" type="button">▶ Escuchar mi canción</button>
-          <small id="musicText">Toca el botón para escucharla en el video oficial de Selena.</small>
+          <small id="musicText">Toca el botón para escucharla.</small>
+
+          <!-- Elemento de audio con el archivo desde tus assets -->
+          <audio id="myAudio" src="assets/Selena - Dreaming of You (30th AnniversaryRemastered 2025).mp3" preload="auto"></audio>
+
+          <!-- Contenedor opcional de controles si deseas mostrar la barra de reproducción -->
           <div style="margin-top:14px;border-radius:14px;overflow:hidden;display:none" id="videoBox">
-            <iframe width="100%" height="180" src="https://www.youtube.com/embed/lZJWDGaMqRA"
-              title="Selena - Dreaming of You" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"
-              allowfullscreen></iframe>
+            <audio controls style="width: 100%;">
+              <source src="assets/Selena - Dreaming of You (30th AnniversaryRemastered 2025).mp3" type="audio/mpeg">
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
         </div>
       </div>
